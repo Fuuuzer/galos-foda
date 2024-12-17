@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="auth.css">
+  <title>Login/Cadastro</title>
+</head>
+
+<body>
+
+  <main class="">
+    <div class="left-side">
+      <img src="/assets/img/galos-logo.svg" alt="">
+
+      <h1>Galos Foda</h1>
+      <p>Aqui 🐓 não tem vez!</p>
+    </div>
+
+    <div class="right-side">
+      <div class="login-inputs">
+        <h3>Login</h3>
+        <input class="email" type="text" placeholder="E-mail">
+        <input class="senha" type="password" placeholder="Senha">
+        <a href="/" class="login-esqueceu">Esqueci minha senha</a>
+        <button class="btn"><a href="#">Entrar</a></button>
+        <p>É novo na Galos foda? <a href="#" id="show-register">Crie sua conta</a></p>
+      </div>
+
+      <div class="form-register hidden">
+        <h3>Registrar</h3>
+        <div class="inputs">
+          <input type="text" placeholder="Nome">
+          <input type="email" placeholder="E-mail">
+          <input type="password" placeholder="Senha">
+          <input type="password" placeholder="Repetir senha">
+        </div>
+        <button class="btn">Cadastrar</button>
+        <p>Já possui conta? <a href="#" id="show-login">Entre aqui</a></p>
+      </div>
+    </div>
+  </main>
+
+  <script src="/assets/app.js"></script>
+</body>
+
+</html>

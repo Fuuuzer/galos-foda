@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+:root {
+  --bg: #272727;
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  width: 1000px;
+  margin: 0 3rem;
+  min-height: 600px;
+  max-height: 50dvh;
+  border-radius: 16px;
+  transition: 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.left-side {
+  transition: border-radius 0.5s ease-in-out;
+  border-radius: 16px 0 0 16px;
+  z-index: 1;
+  background-color: #f4cc2c;
+}
+
+.right-side {
+  /* z-index: 1; */
+  background: #fff;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 0px 16px 16px 0px;
+  transition: border-radius 1s ease-in-out;
+}
+
+.left-side,
+.right-side {
+  max-height: 90dvh;
+  display: flex;
+  transition: transform 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.reverse .left-side {
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+  border-radius: 0 16px 16px 0;
+}
+
+.reverse .right-side {
+  transform: translateX(-100%);
+  border-radius: 16px 0 0 16px;
+  transition: transform 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+}
+
+.reverse .left-side,
+.reverse .right-side {
+  transition: transform 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+}
+
+.left-side h1 {
+  font-size: 3rem;
+}
+
+.left-side p {
+  font-weight: 500;
+}
+
+.right-side h3 {
+  margin-bottom: 10px;
+  font-size: 1.75rem;
+}
+
+.login-inputs,
+.form-register {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-register .inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-inputs p,
+.form-register p {
+  text-align: center;
+  margin-top: 5px;
+}
+.email {
+  margin-bottom: 20px;
+}
+
+input,
+.inputs input {
+  border: 2px solid #000;
+  min-width: 300px;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.login-esqueceu {
+  font-size: 14px;
+  text-align: right;
+  color: #000;
+  margin: 5px 0;
+}
+
+.btn {
+  font-size: 1.25rem;
+  padding: 5px;
+  margin-top: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  min-width: 300px;
+}
+
+.btn a {
+  font-weight: bold;
+  color: #000;
+}
+
+.login-entrar p {
+  text-align: center;
+}
+
+.animation {
+  animation: opacidade 0.7s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes opacidade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
