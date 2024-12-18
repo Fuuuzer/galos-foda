@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/0b1bb0ea4c.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="auth.css">
   <title>Login/Cadastro</title>
 </head>
@@ -19,21 +20,28 @@
     </div>
 
     <div class="right-side">
-      <div class="login-inputs">
+      <div class="login-inputs hidden">
         <h3>Login</h3>
         <input class="email" type="text" placeholder="E-mail">
-        <input class="senha" type="password" placeholder="Senha">
+        <div class="senha-div">
+          <input class="senha" type="password" placeholder="Senha">
+          <i class="fa-regular fa-eye"></i>
+        </div>
         <a href="/" class="login-esqueceu">Esqueci minha senha</a>
         <button class="btn"><a href="#">Entrar</a></button>
         <p>É novo na Galos foda? <a href="#" id="show-register">Crie sua conta</a></p>
       </div>
 
-      <div class="form-register hidden">
+      <div class="form-register">
         <h3>Registrar</h3>
         <div class="inputs">
           <input type="text" placeholder="Nome">
           <input type="email" placeholder="E-mail">
-          <input type="password" placeholder="Senha">
+          <div class="senha-div">
+            <input id="password" type="password" placeholder="Senha">
+            <i class="fa-regular fa-eye"></i>
+          </div>
+          <span>oi</span>
           <input type="password" placeholder="Repetir senha">
         </div>
         <button class="btn">Cadastrar</button>

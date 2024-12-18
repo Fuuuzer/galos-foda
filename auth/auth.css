@@ -126,6 +126,21 @@ input,
   border-radius: 8px;
 }
 
+.senha-div {
+  position: relative;
+  background: none;
+  border: none;
+}
+
+.fa-eye,
+.fa-eye-slash {
+  color: #000;
+  position: absolute;
+  cursor: pointer;
+  right: 10px;
+  bottom: 10px;
+}
+
 input:focus {
   outline: none;
 }
