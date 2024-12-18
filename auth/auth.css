@@ -157,7 +157,7 @@ input:focus {
 }
 
 .animation {
-  animation: opacidade 0.7s ease-in-out;
+  animation: opacidade 0.9s ease-in-out;
 }
 
 .hidden {
