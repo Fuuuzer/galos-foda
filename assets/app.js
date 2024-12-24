@@ -5,7 +5,7 @@ const formRegister = document.querySelector('.form-register');
 const formLogin = document.querySelector('.login-inputs');
 const eyes = document.querySelectorAll('.fa-eye');
 const pass = document.querySelectorAll('.senha');
-const passwordInput = document.getElementById('password')
+const passwordInput = document.getElementById('password');
 
 btnRegister.addEventListener('click', () => {
   formRegister.classList.toggle('hidden');
@@ -23,6 +23,8 @@ btnLogin.addEventListener('click', () => {
 
   document.querySelector('main').classList.toggle('reverse');
 })
+
+console.log(pass)
 
 eyes.forEach(eye => {
   eye.addEventListener('click', () => {
@@ -54,18 +56,32 @@ function validatePassword(password) {
     uppercase: /[A-Z]/.test(password),
     lowercase: /[a-z]/.test(password),
     number: /\d/.test(password),
-    special: /[@$!%*?&#]/.test(password),
+    special: /['"@$!%*?&#._|ç]/.test(password),
   }
 
-  let score = 0;
   for (const [key, valid] of Object.entries(validations)) {
     if (valid) {
       requirements[key].classList.add('valid');
-      score++;
     } else {
       requirements[key].classList.remove('valid');
     }
   }
 }
+
+pass[2].addEventListener('input', () => {
+  const passEqual = document.getElementById('passwordCoincide')
+  function passwordsCombine(senha1, senha2) {
+    if (senha1 === senha2) {
+      console.log('senhas coincidem');
+      passEqual.innerText = 'Isso ai! As senhas são iguais';
+    } else {
+      passEqual.innerText = 'Calma lá amigão, as senhas não conferem';
+      console.log('senhas não coincidem');
+    }
+  }
+  passwordsCombine(pass[1].value, pass[2].value)
+})
+
+
 
 passwordInput.addEventListener('input', (e) => validatePassword(e.target.value));
