@@ -47,7 +47,6 @@ main {
 }
 
 .right-side {
-  /* z-index: 1; */
   background: #fff;
   flex-direction: column;
   gap: 20px;
@@ -104,8 +103,14 @@ main {
 
 .form-register .inputs {
   display: flex;
+  max-width: 350px;
   flex-direction: column;
   gap: 10px;
+}
+
+.form-register .inputs span {
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .login-inputs p,
@@ -120,16 +125,22 @@ main {
 input,
 .inputs input {
   border: 2px solid #000;
-  min-width: 300px;
+  min-width: 350px;
   font-size: 1rem;
   padding: 5px 10px;
   border-radius: 8px;
 }
 
 .senha-div {
+  max-width: 350px;
   position: relative;
   background: none;
   border: none;
+}
+
+.password-minimun {
+  display: grid;
+  gap: 2px;
 }
 
 .fa-eye,
@@ -177,6 +188,14 @@ input:focus {
 
 .hidden {
   display: none;
+}
+
+.grey {
+  color: #7e7e7e;
+}
+
+.green {
+  color: #146e2a;
 }
 
 @keyframes opacidade {
