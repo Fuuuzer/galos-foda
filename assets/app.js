@@ -5,6 +5,7 @@ const formRegister = document.querySelector('.form-register');
 const formLogin = document.querySelector('.login-inputs');
 const eyes = document.querySelectorAll('.fa-eye');
 const pass = document.querySelectorAll('.senha');
+const passwordInput = document.getElementById('password')
 
 btnRegister.addEventListener('click', () => {
   formRegister.classList.toggle('hidden');
@@ -37,3 +38,34 @@ eyes.forEach(eye => {
     })
   })
 })
+
+const requirements = {
+  length: document.getElementById('length'),
+  uppercase: document.getElementById('uppercase'),
+  lowercase: document.getElementById('lowercase'),
+  number: document.getElementById('number'),
+  special: document.getElementById('special'),
+  length: document.getElementById('length'),
+}
+
+function validatePassword(password) {
+  const validations = {
+    length: password.length >= 8,
+    uppercase: /[A-Z]/.test(password),
+    lowercase: /[a-z]/.test(password),
+    number: /\d/.test(password),
+    special: /[@$!%*?&#]/.test(password),
+  }
+
+  let score = 0;
+  for (const [key, valid] of Object.entries(validations)) {
+    if (valid) {
+      requirements[key].classList.add('valid');
+      score++;
+    } else {
+      requirements[key].classList.remove('valid');
+    }
+  }
+}
+
+passwordInput.addEventListener('input', (e) => validatePassword(e.target.value));

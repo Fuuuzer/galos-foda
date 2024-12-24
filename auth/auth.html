@@ -38,14 +38,15 @@
           <input type="text" placeholder="Nome">
           <input type="email" placeholder="E-mail">
           <div class="senha-div">
-            <input class="senha" type="password" placeholder="Senha">
+            <input id="password" class="senha" type="password" placeholder="Senha">
             <i class="fa-regular fa-eye"></i>
           </div>
-          <div class="password-minimun grey">
-            <span>A senha deve conter ao menos 1 letra maiúscula</span>
-            <span>A senha deve conter ao menos 1 letra minúscula</span>
-            <span>A senha deve conter ao menos 1 número</span>
-            <span>A senha deve conter ao menos 1 caractere especial</span>
+          <div class="password-minimun">
+            <span id="length">A senha deve conter ao menos 8 caracteres</span>
+            <span id="uppercase">A senha deve conter ao menos 1 letra maiúscula</span>
+            <span id="lowercase">A senha deve conter ao menos 1 letra minúscula</span>
+            <span id="number">A senha deve conter ao menos 1 número</span>
+            <span id="special">A senha deve conter ao menos 1 caractere especial</span>
           </div>
           <input type="password" placeholder="Repetir senha">
         </div>
