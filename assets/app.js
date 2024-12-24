@@ -4,7 +4,7 @@ const btnLogin = document.getElementById('show-login');
 const formRegister = document.querySelector('.form-register');
 const formLogin = document.querySelector('.login-inputs');
 const eyes = document.querySelectorAll('.fa-eye');
-const pass = document.getElementById('password');
+const pass = document.querySelectorAll('.senha');
 
 btnRegister.addEventListener('click', () => {
   formRegister.classList.toggle('hidden');
@@ -27,12 +27,13 @@ eyes.forEach(eye => {
   eye.addEventListener('click', () => {
     eye.classList.toggle('fa-eye');
     eye.classList.toggle('fa-eye-slash');
-    console.log('oi')
 
-    if (pass.getAttribute('type') === 'password') {
-      pass.setAttribute('type', 'text')
-    } else {
-      pass.setAttribute('type', 'password')
-    }
+    pass.forEach(senha => {
+      if (senha.getAttribute('type') === 'password') {
+        senha.setAttribute('type', 'text');
+      } else {
+        senha.setAttribute('type', 'password');
+      }
+    })
   })
 })
