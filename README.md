@@ -28,7 +28,7 @@ Atualmente, estou trabalhando na **tela de login e cadastro**, permitindo que os
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seuusuario/galosfoda.git
+   git clone https://github.com/Fuuuzer/galos-foda.git
    
 2. Abra o arquivo auth.html no navegador para ver o site em funcionamento.
 
