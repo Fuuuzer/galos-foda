@@ -9,7 +9,11 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('')
+  res.send(console.log('oi'))
+})
+
+app.post('/register', (req, res) => {
+  res.send('POST request to')
 })
 
 const PORT = process.env.PORT || 5000;
