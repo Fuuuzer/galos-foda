@@ -13,10 +13,12 @@ app.get('/', (req, res) => {
 })
 
 app.post('/register', (req, res) => {
-  res.send('POST request to')
+  const { nome, email, password } = req.body;
+  
+  res.json({ message: `${nome}, ${email}, ${password}`})
 })
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`🔥 Servidor rodando na porta ${PORT}`);
 });
