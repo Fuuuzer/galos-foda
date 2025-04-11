@@ -13,6 +13,7 @@ Atualmente, estou trabalhando na **tela de login e cadastro**, permitindo que os
 ### O que estou fazendo atualmente
 
 - **Tela de login/cadastro**: Implementação de um formulário de login e cadastro com validação de senha.
+- **Validações e a lógica do backend**: Validar informações a nível servidor, habilitar login e cadastro via Google com uso de API, etc.
 - **Melhorias planejadas**: Introduzir mais recursos como:
   - Sistema de ranking para os galos.
   - Tela de perfil do usuário, onde o jogador pode ver seus galos e estatísticas.
@@ -23,6 +24,7 @@ Atualmente, estou trabalhando na **tela de login e cadastro**, permitindo que os
 - **HTML/CSS**: Estruturação e estilização da página.
 - **JavaScript**: Lógica do frontend, incluindo validação de formulários e interações com o usuário.
 - **Font Awesome**: Ícones para melhorar a interface do usuário.
+- **Express.js**: Backend e validações do lado do servidor.
 
 ## Como rodar o projeto
 
