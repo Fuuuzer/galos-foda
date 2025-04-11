@@ -24,8 +24,6 @@ btnLogin.addEventListener('click', () => {
   document.querySelector('main').classList.toggle('reverse');
 })
 
-console.log(pass)
-
 eyes.forEach(eye => {
   eye.addEventListener('click', () => {
     eye.classList.toggle('fa-eye');
@@ -72,11 +70,9 @@ pass[2].addEventListener('input', () => {
   const passEqual = document.getElementById('passwordCoincide')
   function passwordsCombine(senha1, senha2) {
     if (senha1 === senha2) {
-      console.log('senhas coincidem');
       passEqual.innerText = 'Isso ai! As senhas são iguais';
     } else {
       passEqual.innerText = 'Calma lá amigão, as senhas não conferem';
-      console.log('senhas não coincidem');
     }
   }
   passwordsCombine(pass[1].value, pass[2].value)

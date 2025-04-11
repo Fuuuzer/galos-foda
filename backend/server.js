@@ -28,7 +28,7 @@ app.post('/register', (req, res) => {
     return res.status(400).json({message: 'A senha deve conter ao meno 8 caracteres'})
   }
 
-})
+});
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

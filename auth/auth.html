@@ -34,29 +34,32 @@
 
       <div class="form-register">
         <h3>Registrar</h3>
-        <div class="inputs">
-          <input type="text" placeholder="Nome">
-          <input type="email" placeholder="E-mail">
-          <div class="senha-div">
-            <input id="password" class="senha" type="password" placeholder="Senha">
-            <i class="fa-regular fa-eye"></i>
+        <form>
+          <div class="inputs">
+            <input id="nome" type="text" placeholder="Nome">
+            <input id="email" type="email" placeholder="E-mail">
+            <div class="senha-div">
+              <input id="password" class="senha" type="password" placeholder="Senha">
+              <i class="fa-regular fa-eye"></i>
+            </div>
+            <div class="password-minimun">
+              <span id="length">A senha deve conter ao menos 8 caracteres</span>
+              <span id="uppercase">A senha deve conter ao menos 1 letra maiúscula</span>
+              <span id="lowercase">A senha deve conter ao menos 1 letra minúscula</span>
+              <span id="number">A senha deve conter ao menos 1 número</span>
+              <span id="special">A senha deve conter ao menos 1 caractere especial</span>
+            </div>
+            <input class="senha" type="password" placeholder="Repetir senha">
+            <span id="passwordCoincide"></span>
           </div>
-          <div class="password-minimun">
-            <span id="length">A senha deve conter ao menos 8 caracteres</span>
-            <span id="uppercase">A senha deve conter ao menos 1 letra maiúscula</span>
-            <span id="lowercase">A senha deve conter ao menos 1 letra minúscula</span>
-            <span id="number">A senha deve conter ao menos 1 número</span>
-            <span id="special">A senha deve conter ao menos 1 caractere especial</span>
-          </div>
-          <input class="senha" type="password" placeholder="Repetir senha">
-          <span id="passwordCoincide"></span>
-        </div>
-        <button class="btn">Cadastrar</button>
-        <p>Já possui conta? <a href="#" id="show-login">Entre aqui</a></p>
+          <button type="submit" id="botao-cadastrar" class="btn">Cadastrar</button>
+          <p>Já possui conta? <a href="#" id="show-login">Entre aqui</a></p>
+        </form>
       </div>
     </div>
   </main>
 
+  <script src="auth.js"></script>
   <script src="/assets/app.js"></script>
 </body>
 
