@@ -9,13 +9,25 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send(console.log('oi'))
+  res.send()
 })
 
 app.post('/register', (req, res) => {
   const { nome, email, password } = req.body;
   
-  res.json({ message: `${nome}, ${email}, ${password}`})
+  if (!nome || !email || !password) {
+    return res.status(400).json({message: 'Você precisa preencher todos os campos'})
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailRegex.test(email)) {
+    return res.status(400).json({message: 'Insira um Email válido'})
+  }
+
+  if(password.length < 8) {
+    return res.status(400).json({message: 'A senha deve conter ao meno 8 caracteres'})
+  }
+
 })
 
 const PORT = process.env.PORT;
