@@ -35,5 +35,11 @@ loginButton.addEventListener('click', (e) => {
     body: JSON.stringify({ email, password })
   })
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(data => {
+    if (data.message === 'Login bem-sucedido!') {
+      window.location.href = '../dashboard/dash.html'
+    } else {
+      alert(data.message)
+    }
+  })
 })
