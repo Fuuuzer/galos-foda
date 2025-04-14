@@ -1,0 +1,19 @@
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.header {
+  width: 100%;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
