@@ -29,7 +29,7 @@ loginButton.addEventListener('click', (e) => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ email: 'fuzer@hotmail.com', password: '123456'})
+    body: JSON.stringify({ email: 'fuzeer@hotmail.com', password: '123456'})
   })
   .then(response => response.json())
   .then(data => console.log(data))
