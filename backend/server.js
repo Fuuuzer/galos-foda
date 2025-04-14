@@ -1,7 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors')
-
+const cors = require('cors');
+const e = require('express');
+const db = require('./database/database')
 
 const app = express();
 
@@ -20,13 +21,16 @@ const usuarios = [
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
-  const encontrarUsuario = usuarios.find((u) => u.email === email && u.password === password)
+  const encontrarUsuarios = usuarios.find((u) => {
+    return u.email === email && u.password === password
+  });
 
-  if(!encontrarUsuario) {
-    return res.status(400).json({ message: 'Não foi possível encontrar um usuário com esses dados'});
+  if(!encontrarUsuarios){
+    return res.status(400).json({message: 'Usuario nao encontrado'})
   }
-  return res.status(200).json({ message: 'Login bem sucedido!'})
-})
+  return res.status(200).json({message: 'login bem sucedido!'})
+  })
+
 
 app.post('/register', (req, res) => {
   const { nome, email, password } = req.body;
