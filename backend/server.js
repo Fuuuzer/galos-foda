@@ -54,19 +54,12 @@ app.get('/', (req, res) => {
   res.send()
 })
 
-// const usuarios = [
-//   {email: 'fuzer@hotmail.com', password: '123456'},
-//   {email: 'fuzer123@hotmail.com', password: '123456'}
-// ]
-
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
   const encontrarUsuarios = () => {
       const query = `SELECT * FROM usuarios WHERE email = ? and password = ?`;
       db.get(query, [email, password], (err, row) => {
-        console.log('email:', email);
-        console.log('senha:', password);
         if (err) {
           console.error('usuario nao econtrado', err)
           return res.status(500).json({message: 'Usuario nao encontrado'})
@@ -80,9 +73,9 @@ app.post('/login', (req, res) => {
     encontrarUsuarios()
   }
 )
-db.all(`SELECT * FROM usuarios`, [], (err, rows) => {
-  console.log(rows)
-});
+// db.all(`SELECT * FROM usuarios`, [], (err, rows) => {
+//   console.log(rows)
+// });
 
 app.post('/register', (req, res) => {
   const { nome, email, password } = req.body;
