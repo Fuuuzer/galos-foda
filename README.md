@@ -25,7 +25,7 @@ Atualmente, estou trabalhando na **tela de login e cadastro**, permitindo que os
 - **JavaScript**: Lógica do frontend, incluindo validação de formulários e interações com o usuário.
 - **Font Awesome**: Ícones para melhorar a interface do usuário.
 - **Express.js**: Backend e validações do lado do servidor.
-
+- **SQLite**: Banco de dados.
 ## Como rodar o projeto
 
 1. Clone o repositório:
