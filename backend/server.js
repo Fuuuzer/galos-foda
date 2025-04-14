@@ -44,7 +44,7 @@ const getUsers = () => {
     }
   })
 }
-getUsers()
+// getUsers()
 const app = express();
 
 app.use(cors());
@@ -62,16 +62,27 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
-  const encontrarUsuarios = usuarios.find((u) => {
-    return u.email === email && u.password === password
-  });
-
-  if(!encontrarUsuarios){
-    return res.status(400).json({message: 'Usuario nao encontrado'})
+  const encontrarUsuarios = () => {
+      const query = `SELECT * FROM usuarios WHERE email = ? and password = ?`;
+      db.get(query, [email, password], (err, row) => {
+        console.log('email:', email);
+        console.log('senha:', password);
+        if (err) {
+          console.error('usuario nao econtrado', err)
+          return res.status(500).json({message: 'Usuario nao encontrado'})
+        }
+        if (!row) {
+          return res.status(401).json({ message: 'Email ou senha incorretos'});
+        }
+        return res.status(200).json({ message: 'Login bem-sucedido!'});
+      })
+    }
+    encontrarUsuarios()
   }
-  return res.status(200).json({message: 'login bem sucedido!'})
-  })
-
+)
+db.all(`SELECT * FROM usuarios`, [], (err, rows) => {
+  console.log(rows)
+});
 
 app.post('/register', (req, res) => {
   const { nome, email, password } = req.body;
@@ -90,9 +101,6 @@ app.post('/register', (req, res) => {
   }
 
   const insertUser = (nome, email, password) => {
-    if (email) {
-      return console.log('O usuario ja existe')
-    } else {
       const query= `INSERT INTO usuarios (nome, email,password) VALUES (?, ?, ?)`
       db.run(query, [nome, email, password], (err) => {
         if (err) {
@@ -103,7 +111,6 @@ app.post('/register', (req, res) => {
           return res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
         }
       })
-    }
     
   }
   insertUser(nome, email, password)
