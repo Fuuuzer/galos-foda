@@ -23,17 +23,16 @@ const createTable = () => {
 }
 // createTable()
 
-const insertUser = (nome, email, password) => {
-  const query= `REMOVE FROM usuarios (nome, email, password) VALUES (?, ?, ?)`
-  db.run(query, [nome, email, password], (err) => {
-    if (err) {
-      console.error('Erro ao inserir usuario')
-    } else {
-      console.log('usuario inserido com sucesso')
-    }
-  })
-}
-// insertUser('João','fuzer@hotmail.com', '123456')
+// const insertUser = (nome, email, password) => {
+//   const query= `REMOVE FROM usuarios (nome, email, password) VALUES (?, ?, ?)`
+//   db.run(query, [nome, email, password], (err) => {
+//     if (err) {
+//       console.error('Erro ao inserir usuario')
+//     } else {
+//       console.log('usuario inserido com sucesso')
+//     }
+//   })
+// }
 
 const getUsers = () => {
   const query = `SELECT * FROM usuarios`;
@@ -55,10 +54,10 @@ app.get('/', (req, res) => {
   res.send()
 })
 
-const usuarios = [
-  {email: 'fuzer@hotmail.com', password: '123456'},
-  {email: 'fuzer123@hotmail.com', password: '123456'}
-]
+// const usuarios = [
+//   {email: 'fuzer@hotmail.com', password: '123456'},
+//   {email: 'fuzer123@hotmail.com', password: '123456'}
+// ]
 
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
@@ -89,6 +88,25 @@ app.post('/register', (req, res) => {
   if (password.length < 8) {
     return res.status(400).json({ message: 'A senha deve conter ao menos 8 caracteres' })
   }
+
+  const insertUser = (nome, email, password) => {
+    if (email) {
+      return console.log('O usuario ja existe')
+    } else {
+      const query= `INSERT INTO usuarios (nome, email,password) VALUES (?, ?, ?)`
+      db.run(query, [nome, email, password], (err) => {
+        if (err) {
+          console.error('Erro ao inserir usuario', err);
+          return res.status(500).json({ message: 'Erro ao cadastrar usuário' });
+        } else {
+          console.log('Usuário inserido com sucesso!');
+          return res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
+        }
+      })
+    }
+    
+  }
+  insertUser(nome, email, password)
 
 });
 
