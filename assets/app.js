@@ -78,6 +78,6 @@ pass[2].addEventListener('input', () => {
   passwordsCombine(pass[1].value, pass[2].value)
 })
 
-
-
 passwordInput.addEventListener('input', (e) => validatePassword(e.target.value));
+
+
