@@ -1,8 +1,0 @@
- POST https://accounts.google.com/o/oauth2/token
-
-{
-  "client_secret" : "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",
-  "grant_type" : "refresh_token",
-  "refresh_token" : "1//04hLDQ0GSxCfrCgYIARAAGAQSNgF-L9IrH669hroO5arD_qrMMQ3l_xFy1opyqUIRb7kCvsxrdy6aCvZc4PIyNKduaEPE3kRLyg", 
-  "client_id" : "1068464935820-j61efbspqqm63i56iig9e3ij7ppo8nm6.apps.googleusercontent.com",
-}
