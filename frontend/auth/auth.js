@@ -1,3 +1,4 @@
+// const { get } = require("http");
 const buttonRegister = document.getElementById('botao-cadastrar');  
 const loginButton = document.getElementById('login-btn');  
 
@@ -22,24 +23,38 @@ const password = document.getElementById('password').value;
   .catch(err => console.log('erro ao enviar requisição', err))
 });
 
-loginButton.addEventListener('click', (e) => {
+
+
+loginButton.addEventListener('click', async (e) => {
   e.preventDefault()
+
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
 
-  fetch('http://localhost:5000/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ email, password })
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.message === 'Login bem-sucedido!') {
+  await getData(email , password)
+  
+})
+
+async function getData() {
+  const email = document.getElementById('login-email').value;
+  const password = document.getElementById('login-password').value;
+  const url = 'http://localhost:5000/login';
+  try {
+    const response = await fetch(url, { method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })});
+    if (!response.ok) {
+      throw new Error(`Response Status: ${response.status}`)
+    }
+    const json = await response.json();
+    if(json.message === 'Login bem-sucedido!'){
       window.location.href = '../dashboard/dash.html'
     } else {
-      alert(data.message)
+      alert('Não foi possivel fazer o o login')
     }
-  })
-})
+  } catch (error) {
+    alert('Usuario nao encontrado')
+  }
+}

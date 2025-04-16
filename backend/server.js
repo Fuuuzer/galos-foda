@@ -44,7 +44,19 @@ const getUsers = () => {
     }
   })
 }
-// getUsers()
+getUsers()
+
+const deleteAllUsers = () => {
+  const query = `DELETE FROM usuarios`;
+  db.run(query, [], (err) => {
+    if(err) {
+      console.error('erro ao deletar os usuarios')
+    } else {
+      console.log('Usuarios deletados com sucesso')
+    }
+  })
+}
+// deleteAllUsers()
 const app = express();
 
 app.use(cors());
