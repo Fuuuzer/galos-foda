@@ -2,6 +2,16 @@ const buttonRegister = document.getElementById('botao-cadastrar');
 const loginButton = document.getElementById('login-btn');
 
 
+// POST https://accounts.google.com/o/oauth2/token
+
+{
+  "client_secret" : "",
+  "grant_type" : "",
+  "refresh_token" : "",
+  "client_secret" : "",
+  "client_id" : "",
+}
+
 buttonRegister.addEventListener('click', (e) => {
   e.preventDefault()
   const nome = document.getElementById('nome').value;
@@ -21,6 +31,7 @@ buttonRegister.addEventListener('click', (e) => {
     })
     .catch(err => console.log('erro ao enviar requisição', err))
 });
+
 
 
 
