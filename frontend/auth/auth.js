@@ -1,26 +1,25 @@
-// const { get } = require("http");
-const buttonRegister = document.getElementById('botao-cadastrar');  
-const loginButton = document.getElementById('login-btn');  
+const buttonRegister = document.getElementById('botao-cadastrar');
+const loginButton = document.getElementById('login-btn');
 
 
 buttonRegister.addEventListener('click', (e) => {
-e.preventDefault()
-const nome = document.getElementById('nome').value;
-const email = document.getElementById('email').value;
-const password = document.getElementById('password').value;
+  e.preventDefault()
+  const nome = document.getElementById('nome').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
 
   fetch('http://localhost:5000/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ nome, email, password})
+    body: JSON.stringify({ nome, email, password })
   })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data)
-  })
-  .catch(err => console.log('erro ao enviar requisição', err))
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
+    .catch(err => console.log('erro ao enviar requisição', err))
 });
 
 
@@ -31,8 +30,8 @@ loginButton.addEventListener('click', async (e) => {
   const email = document.getElementById('login-email').value;
   const password = document.getElementById('login-password').value;
 
-  await getData(email , password)
-  
+  await getData(email, password)
+
 })
 
 async function getData() {
@@ -40,16 +39,18 @@ async function getData() {
   const password = document.getElementById('login-password').value;
   const url = 'http://localhost:5000/login';
   try {
-    const response = await fetch(url, { method: 'POST',
+    const response = await fetch(url, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ email, password })});
+      body: JSON.stringify({ email, password })
+    });
     if (!response.ok) {
       throw new Error(`Response Status: ${response.status}`)
     }
     const json = await response.json();
-    if(json.message === 'Login bem-sucedido!'){
+    if (json.message === 'Login bem-sucedido!') {
       window.location.href = '../dashboard/dash.html'
     } else {
       alert('Não foi possivel fazer o o login')
