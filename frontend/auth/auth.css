@@ -111,6 +111,20 @@ main {
   margin-bottom: 20px;
 }
 
+.types-login {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.types-login img {
+  border-radius: 50%;
+  width: 40px;
+  cursor: pointer;
+}
+
 input,
 .inputs input {
   border: 2px solid #000;
@@ -151,8 +165,10 @@ input:focus {
 }
 
 .login-esqueceu {
+  display: inline;
   font-size: 14px;
-  text-align: right;
+  text-decoration: underline;
+  width: fit-content;
   color: #000;
   margin: 5px 0;
 }
@@ -194,7 +210,4 @@ input:focus {
 }
 
 @media (max-width: 850px) {
-  .right-side {
-    font-size: 0.9em;
-  }
 }
