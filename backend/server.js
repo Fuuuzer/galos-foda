@@ -6,7 +6,7 @@ const db = require('./database/database');
 const { Passport } = require('passport');
 const passport = require('passport');
 const GoogleStrategy = require ('passport-google-oauth20').Strategy;
-const router = express.Router()
+const router = express.Router();
 
 //Parte do banco de dados
 const createTable = () => {
@@ -65,6 +65,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/', router)
+app.use(passport.initialize())
 
 app.get('/', (req, res) => {
   res.send()
@@ -126,23 +127,27 @@ app.post('/register', (req, res) => {
 
 });
 
+
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+console.log('ID:', process.env.GOOGLE_CLIENT_ID);
+console.log('SECRET:', process.env.GOOGLE_CLIENT_SECRET);
 
 passport.use(new GoogleStrategy({
-  clientID: GOOGLE_CLIENT_ID,
-  clientSecret: GOOGLE_CLIENT_SECRET,
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL : "http://localhost:5000/auth/google/callback",
   passReqToCallback: true
-},
-  function(request, accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ googleId: profile.id }), function (err, user) {
-      return done(err, user)
-    }
+}, (request, accessToken, refreshToken, profile, done) =>  {
+    console.log('perfil do usuario', profile);
+    return done(null, profile)
 }
 ))
 
-app.get('/auth/google', passport.authenticate('google', { scope: ['email', 'profile'] }))
+app.get('/auth/google', (req, res, next) =>  {
+  console.log('Inciaindo login google');
+  next();},
+  passport.authenticate('google', { scope: ['email', 'profile'] }))
 
 app.get('/auth/google/callback', 
   passport.authenticate( 'google', {
