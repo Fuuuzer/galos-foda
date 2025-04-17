@@ -26,6 +26,8 @@ Atualmente, estou trabalhando na **tela de login e cadastro**, permitindo que os
 - **Font Awesome**: Ícones para melhorar a interface do usuário.
 - **Express.js**: Backend e validações do lado do servidor.
 - **SQLite**: Banco de dados.
+- **Passport**: Utilizar o login via google e futuramente via facebook;
+- **OAuth 2.0**: Autenticação para permitir login de terceiros;
 ## Como rodar o projeto
 
 1. Clone o repositório:
