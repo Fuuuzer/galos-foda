@@ -1,5 +1,6 @@
 const buttonRegister = document.getElementById('botao-cadastrar');
 const loginButton = document.getElementById('login-btn');
+const googleLoginButton = document.getElementById('login-google')
 
 buttonRegister.addEventListener('click', (e) => {
   e.preventDefault()
@@ -59,3 +60,7 @@ async function getData() {
     alert('Usuario nao encontrado')
   }
 }
+
+googleLoginButton.addEventListener('click', () => {
+  window.location.href = 'http://localhost:5000/auth/google';
+})
