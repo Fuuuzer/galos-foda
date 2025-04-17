@@ -81,6 +81,7 @@ main {
 .right-side h3 {
   margin-bottom: 10px;
   font-size: 1.75rem;
+  color: #f4cc2c;
 }
 
 .login-inputs,
@@ -128,10 +129,11 @@ main {
 input,
 .inputs input {
   border: 2px solid #000;
+  background-color: #fff;
   min-width: 350px;
   font-size: 1rem;
   padding: 5px 10px;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .senha-div {
