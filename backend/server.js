@@ -3,66 +3,14 @@ const express = require('express');
 const session = require ('express-session');
 const cors = require('cors');
 const e = require('express');
-const db = require('./database/database');
-const { Passport } = require('passport');
 const passport = require('passport');
 const GoogleStrategy = require ('passport-google-oauth20').Strategy;
 const router = express.Router();
-const path = require('path')
-
-//Parte do banco de dados
-const createTable = () => {
-  const query = `CREATE TABLE IF NOT EXISTS usuarios (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  nome TEXT NOT NULL,
-  email TEXT NOT NULL,
-  password TEXT NOT NULL
-  );`
-  db.run(query, (err) => {
-    if (err) {
-      console.error('Erro ao criar a tabela', err.message)
-    } else {
-      console.log('tabela criada com sucesso!')
-    }
-  })
-}
-// createTable()
-
-// const insertUser = (nome, email, password) => {
-//   const query= `REMOVE FROM usuarios (nome, email, password) VALUES (?, ?, ?)`
-//   db.run(query, [nome, email, password], (err) => {
-//     if (err) {
-//       console.error('Erro ao inserir usuario')
-//     } else {
-//       console.log('usuario inserido com sucesso')
-//     }
-//   })
-// }
-
-const getUsers = () => {
-  const query = `SELECT * FROM usuarios`;
-  db.all(query, [], (err, rows) => {
-    if (err) {
-      console.error('Erro ao consultar os dados')
-    } else {
-      console.log('usuarios encontrados', rows)
-    }
-  })
-}
-getUsers()
-
-const deleteAllUsers = () => {
-  const query = `DELETE FROM usuarios`;
-  db.run(query, [], (err) => {
-    if(err) {
-      console.error('erro ao deletar os usuarios')
-    } else {
-      console.log('Usuarios deletados com sucesso')
-    }
-  })
-}
-// deleteAllUsers()
+const path = require('path');
+const Usuario = require('./database/models/Usuario');
 const app = express();
+
+
 
 const corsOptions = {
   origin: 'http://127.0.0.1:5500',
@@ -88,13 +36,24 @@ app.get('/', (req, res) => {
   res.send()
 })
 
+const insertUser = async (nome, email, password, res) => {
+  try {
+    Usuario.create({ nome, email, password});
+    console.log('Usuario inserido')
+    return res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
+  } catch (err) {
+    console.error('Erro ao inserir');
+    return res.status(500).json({ message: 'Erro ao encontrar usuario' });
+  }
+}
+
 
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
   const encontrarUsuarios = () => {
       const query = `SELECT * FROM usuarios WHERE email = ? and password = ?`;
-      db.get(query, [email, password], (err, row) => {
+      Usuario.find(query, [email, password], (err, row) => {
         if (err) {
           console.error('usuario nao econtrado', err)
           return res.status(500).json({message: 'Usuario nao encontrado'})
@@ -108,10 +67,6 @@ app.post('/login', (req, res) => {
     encontrarUsuarios()
   }
 )
-// db.all(`SELECT * FROM usuarios`, [], (err, rows) => {
-//   console.log(rows)
-// });
-
 app.post('/register', (req, res) => {
   const { nome, email, password } = req.body;
 
@@ -128,22 +83,9 @@ app.post('/register', (req, res) => {
     return res.status(400).json({ message: 'A senha deve conter ao menos 8 caracteres' })
   }
 
-  const insertUser = (nome, email, password) => {
-      const query= `INSERT INTO usuarios (nome, email,password) VALUES (?, ?, ?)`
-      db.run(query, [nome, email, password], (err) => {
-        if (err) {
-          console.error('Erro ao inserir usuario', err);
-          return res.status(500).json({ message: 'Erro ao cadastrar usuário' });
-        } else {
-          console.log('Usuário inserido com sucesso!');
-          return res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
-        }
-      })
-    
-  }
-  insertUser(nome, email, password)
+  insertUser(nome, email, password, res);
+})
 
-});
 
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
