@@ -1,4 +1,5 @@
-require('dotenv').config();
+const path = require('path'); 
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const express = require('express');
 const session = require ('express-session');
 const cors = require('cors');
@@ -6,7 +7,6 @@ const e = require('express');
 const passport = require('passport');
 const GoogleStrategy = require ('passport-google-oauth20').Strategy;
 const router = express.Router();
-const path = require('path');
 const Usuario = require('./database/models/Usuario');
 const { connect } = require('http2');
 const connectDB = require('./database/mongo');
