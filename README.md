@@ -25,7 +25,8 @@ Atualmente, estou trabalhando na **tela de login e cadastro**, permitindo que os
 - **JavaScript**: Lógica do frontend, incluindo validação de formulários e interações com o usuário.
 - **Font Awesome**: Ícones para melhorar a interface do usuário.
 - **Express.js**: Backend e validações do lado do servidor.
-- **SQLite**: Banco de dados.
+- **MongoDB**: Banco de dados.
+- **Mongoose**: Banco de dados.
 - **Passport**: Utilizar o login via google e futuramente via facebook;
 - **OAuth 2.0**: Autenticação para permitir login de terceiros;
 ## Como rodar o projeto
