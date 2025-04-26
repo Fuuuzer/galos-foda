@@ -4,7 +4,7 @@
 
 ## Objetivo do Projeto
 
-Esse projeto foi criado como um desafio pessoal para melhorar minhas habilidades de desenvolvimento web e que eu possa finalmente conseguir fazer algo do início ao fim, sendo 100% de minha autoria. Ao longo do desenvolvimento, estou me desafiando a aprender novas técnicas e a aplicar conceitos que tenho estudado, com o objetivo de criar uma plataforma que seja legal e funcional.
+Esse projeto foi criado como um desafio pessoal para melhorar minhas habilidades de desenvolvimento web e para que também eu possa finalmente conseguir fazer algo do início ao fim, sendo 100% de minha autoria. Ao longo do desenvolvimento, estou me desafiando a aprender novas técnicas e a aplicar conceitos que tenho estudado, com o objetivo de criar uma plataforma que seja legal e funcional.
 
 ## Funcionalidades
 
