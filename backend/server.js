@@ -15,14 +15,11 @@ const saltRounds = 12;
 
 connectDB();
 
-
-
 const corsOptions = {
   origin: 'http://127.0.0.1:5500',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }
-
 
 app.options('*', cors(corsOptions))
 app.use(cors(corsOptions));
@@ -35,7 +32,6 @@ app.use(session({
 }))
 app.use(passport.session());
 app.use(passport.initialize())
-
 
 app.get('/', (req, res) => {
   res.send()
@@ -68,7 +64,6 @@ const findUser = async (email, password, res) => {
       return res.status(401).json({ message: 'Email ou senha incorretos'});
     }
 
-
     console.log('Usuario encontrado')
     return res.status(200).json({ message: 'Login realizado'});
   } catch (err){
@@ -84,7 +79,6 @@ app.post('/login', (req, res) => {
   }
 )
 
-
 app.post('/register', (req, res) => {
   const { nome, email, password } = req.body;
   console.log(password)
@@ -98,7 +92,6 @@ app.post('/register', (req, res) => {
     return res.status(400).json({ message: 'Insira um Email válido' })
   }
 
-  
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&]{8,}$/;
   if (!passwordRegex.test(password)) {
     return res.status(400).json({ message: 'A senha deve conter ao menos 8 caracteres' })
@@ -111,7 +104,6 @@ app.post('/register', (req, res) => {
     insertUser(nome, email, hash, res);
   })
 })
-
 
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
@@ -137,7 +129,6 @@ app.get('/auth/google', (req, res, next) =>  {
   next();
 },
   passport.authenticate('google', { scope: ['email', 'profile'] }))
-
 
 app.use(express.static(path.join(__dirname, '../frontend')));
 
