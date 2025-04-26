@@ -6,9 +6,14 @@
 
 Esse projeto foi criado como um desafio pessoal para melhorar minhas habilidades de desenvolvimento web e que eu possa finalmente conseguir fazer algo do início ao fim, sendo 100% de minha autoria. Ao longo do desenvolvimento, estou me desafiando a aprender novas técnicas e a aplicar conceitos que tenho estudado, com o objetivo de criar uma plataforma que seja legal e funcional.
 
-## O que foi feito até agora
+## Funcionalidades
 
-Atualmente, estou trabalhando na **tela de login e cadastro**, permitindo que os usuários criem contas e façam login de maneira simples e segura. A interface foi projetada para ser intuitiva, e o processo de cadastro inclui/incluirá a validação da senha, garantindo que ela atenda a requisitos de segurança (ou nem tanto por enquanto kkkk).
+- [x] Tela de Login criada
+- [x] Tela de Cadastro criada
+- [x] Criação do banco de dados
+- [x] Login API c/ Google
+- [ ] Validação forte de senha (em andamento)
+- [ ] Tela de Dashboard (em andamento)
 
 ### O que estou fazendo atualmente
 
