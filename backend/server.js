@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 
 const insertUser = async (nome, email, password, res) => {
   try {
-    Usuario.create({ nome, email, password});
+    await Usuario.create({ nome, email, password});
     console.log('Usuario inserido')
     return res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
   } catch (err) {
@@ -75,6 +75,8 @@ app.post('/login', (req, res) => {
     findUser(email, password, res)
   }
 )
+
+
 app.post('/register', (req, res) => {
   const { nome, email, password } = req.body;
 
@@ -87,7 +89,9 @@ app.post('/register', (req, res) => {
     return res.status(400).json({ message: 'Insira um Email válido' })
   }
 
-  if (password.length < 8) {
+  
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  if (!passwordRegex.test(password)) {
     return res.status(400).json({ message: 'A senha deve conter ao menos 8 caracteres' })
   }
 
