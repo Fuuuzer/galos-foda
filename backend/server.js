@@ -8,7 +8,11 @@ const GoogleStrategy = require ('passport-google-oauth20').Strategy;
 const router = express.Router();
 const path = require('path');
 const Usuario = require('./database/models/Usuario');
+const { connect } = require('http2');
+const connectDB = require('./database/mongo');
 const app = express();
+
+connectDB();
 
 
 
@@ -47,24 +51,28 @@ const insertUser = async (nome, email, password, res) => {
   }
 }
 
+const findUser = async (email, password, res) => {
+  try {
+    const user = await Usuario.findOne({ email, password });
+
+    if (!user) {
+      console.log('Email ou senha incorretos')
+      return res.status(401).json({ message: 'Email ou senha incorretos'});
+    }
+
+    console.log('Usuario encontrado')
+    return res.status(200).json({ message: 'Login realizado'});
+  } catch (err){
+    console.log('Email ou senha Incorretos')
+    return res.status(500).json({ message: 'Erro no servidor'});
+  }
+}
+
 
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
-  const encontrarUsuarios = () => {
-      const query = `SELECT * FROM usuarios WHERE email = ? and password = ?`;
-      Usuario.find(query, [email, password], (err, row) => {
-        if (err) {
-          console.error('usuario nao econtrado', err)
-          return res.status(500).json({message: 'Usuario nao encontrado'})
-        }
-        if (!row) {
-          return res.status(401).json({ message: 'Email ou senha incorretos'});
-        }
-        return res.status(200).json({ message: 'Login bem-sucedido!'});
-      })
-    }
-    encontrarUsuarios()
+    findUser(email, password, res)
   }
 )
 app.post('/register', (req, res) => {

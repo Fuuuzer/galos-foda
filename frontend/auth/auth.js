@@ -51,7 +51,7 @@ async function getData() {
       throw new Error(`Response Status: ${response.status}`)
     }
     const json = await response.json();
-    if (json.message === 'Login bem-sucedido!') {
+    if (json.message === 'Login realizado') {
       window.location.href = '../dashboard/dash.html'
     } else {
       alert('Não foi possivel fazer o o login')
