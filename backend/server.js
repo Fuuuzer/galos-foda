@@ -8,9 +8,10 @@ const passport = require('passport');
 const GoogleStrategy = require ('passport-google-oauth20').Strategy;
 const router = express.Router();
 const Usuario = require('./database/models/Usuario');
-const { connect } = require('http2');
 const connectDB = require('./database/mongo');
 const app = express();
+const bcrypt = require('bcrypt');
+const saltRounds = 12;
 
 connectDB();
 
@@ -53,12 +54,20 @@ const insertUser = async (nome, email, password, res) => {
 
 const findUser = async (email, password, res) => {
   try {
-    const user = await Usuario.findOne({ email, password });
+    const user = await Usuario.findOne({ email });
 
     if (!user) {
       console.log('Email ou senha incorretos')
       return res.status(401).json({ message: 'Email ou senha incorretos'});
     }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      console.log('Email ou senha incorretos');
+      return res.status(401).json({ message: 'Email ou senha incorretos'});
+    }
+
 
     console.log('Usuario encontrado')
     return res.status(200).json({ message: 'Login realizado'});
@@ -67,7 +76,6 @@ const findUser = async (email, password, res) => {
     return res.status(500).json({ message: 'Erro no servidor'});
   }
 }
-
 
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
@@ -79,6 +87,7 @@ app.post('/login', (req, res) => {
 
 app.post('/register', (req, res) => {
   const { nome, email, password } = req.body;
+  console.log(password)
 
   if (!nome || !email || !password) {
     return res.status(400).json({ message: 'Você precisa preencher todos os campos' })
@@ -90,12 +99,17 @@ app.post('/register', (req, res) => {
   }
 
   
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&]{8,}$/;
   if (!passwordRegex.test(password)) {
     return res.status(400).json({ message: 'A senha deve conter ao menos 8 caracteres' })
   }
 
-  insertUser(nome, email, password, res);
+  bcrypt.hash(password, saltRounds, (err, hash) => {
+    if (err){
+      return res.status(500).json({ message: 'erro ao criptografar senha' })
+    }
+    insertUser(nome, email, hash, res);
+  })
 })
 
 
