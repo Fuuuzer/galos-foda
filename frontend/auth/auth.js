@@ -1,6 +1,6 @@
 const buttonRegister = document.getElementById('botao-cadastrar');
 const loginButton = document.getElementById('login-btn');
-const googleLoginButton = document.getElementById('login-google')
+const googleLoginButton = document.getElementById('login-google');
 
 buttonRegister.addEventListener('click', (e) => {
   e.preventDefault()
@@ -22,9 +22,6 @@ buttonRegister.addEventListener('click', (e) => {
     .catch(err => console.log('erro ao enviar requisição', err))
 });
 
-
-
-
 loginButton.addEventListener('click', async (e) => {
   e.preventDefault()
 
@@ -32,7 +29,6 @@ loginButton.addEventListener('click', async (e) => {
   const password = document.getElementById('login-password').value;
 
   await getData(email, password)
-
 })
 
 async function getData() {

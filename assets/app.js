@@ -66,15 +66,25 @@ function validatePassword(password) {
   }
 }
 
-pass[2].addEventListener('input', () => {
+function passwordsCombine(senha1, senha2) {
   const passEqual = document.getElementById('passwordCoincide')
-  function passwordsCombine(senha1, senha2) {
-    if (senha1 === senha2) {
-      passEqual.innerText = 'Isso ai! As senhas são iguais';
-    } else {
-      passEqual.innerText = 'Calma lá amigão, as senhas não conferem';
-    }
+  if (senha1 === senha2) {
+    passEqual.innerText = 'Isso ai! As senhas são iguais';
+    passEqual.style.color = 'green';
+  } else {
+    passEqual.innerText = 'Calma lá amigão, as senhas não conferem';
+    passEqual.style.color = 'red';
   }
+}
+
+pass[1].addEventListener('input', () => {
+  
+
+  passwordsCombine(pass[1].value, pass[2].value)
+})
+
+pass[2].addEventListener('input', () => {
+
   passwordsCombine(pass[1].value, pass[2].value)
 })
 
