@@ -1,12 +1,18 @@
 const buttonRegister = document.getElementById('botao-cadastrar');
 const loginButton = document.getElementById('login-btn');
 const googleLoginButton = document.getElementById('login-google');
+const nome = document.getElementById('nome').value;
+const email = document.getElementById('email').value;
+const password = document.getElementById('password').value;
+
+if (nome === '' || email === '' || password === '') {
+  buttonRegister.disabled = true;
+} else {
+  buttonRegister.disabled = false;
+}
 
 buttonRegister.addEventListener('click', (e) => {
   e.preventDefault()
-  const nome = document.getElementById('nome').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
 
   fetch('http://localhost:5000/register', {
     method: 'POST',

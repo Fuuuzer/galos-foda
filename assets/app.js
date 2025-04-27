@@ -68,12 +68,24 @@ function validatePassword(password) {
 
 function passwordsCombine(senha1, senha2) {
   const passEqual = document.getElementById('passwordCoincide')
+
+  if (senha1 === '' && senha2 === '') {
+    passEqual.innerText = 'Por favor, digite uma senha';
+    return
+  }
+
   if (senha1 === senha2) {
     passEqual.innerText = 'Isso ai! As senhas são iguais';
     passEqual.style.color = 'green';
+    pass.forEach(pass => {
+      pass.style.border = '2px solid green'
+    })
   } else {
     passEqual.innerText = 'Calma lá amigão, as senhas não conferem';
     passEqual.style.color = 'red';
+    pass.forEach(pass => {
+      pass.style.border = '2px solid red'
+    })
   }
 }
 
