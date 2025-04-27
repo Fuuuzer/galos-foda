@@ -12,7 +12,7 @@ Esse projeto foi criado como um desafio pessoal para melhorar minhas habilidades
 - [x] Tela de Cadastro criada
 - [x] Criação do banco de dados
 - [x] Login API c/ Google
-- [x] Validação forte de senha (utilizado o bcrypt para criar um hash da senha)
+- [x] Validação forte de senha (utilizado o bcrypt para criptografar a senha antes de salvar no banco de dados)
 - [ ] Tela de Dashboard (em andamento)
 
 ### O que estou fazendo atualmente
