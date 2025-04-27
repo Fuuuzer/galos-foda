@@ -12,7 +12,7 @@ Esse projeto foi criado como um desafio pessoal para melhorar minhas habilidades
 - [x] Tela de Cadastro criada
 - [x] Criação do banco de dados
 - [x] Login API c/ Google
-- [ ] Validação forte de senha (em andamento)
+- [x] Validação forte de senha (utilizado o bcrypt para criar um hash da senha)
 - [ ] Tela de Dashboard (em andamento)
 
 ### O que estou fazendo atualmente
@@ -26,12 +26,13 @@ Esse projeto foi criado como um desafio pessoal para melhorar minhas habilidades
 
 ## Tecnologias utilizadas
 
-- **HTML/CSS**: Estruturação e estilização da página.
-- **JavaScript**: Lógica do frontend, incluindo validação de formulários e interações com o usuário.
-- **Font Awesome**: Ícones para melhorar a interface do usuário.
-- **Express.js**: Backend e validações do lado do servidor.
-- **MongoDB**: Banco de dados.
-- **Mongoose**: Banco de dados.
+- **HTML/CSS**: Estruturação e estilização da página;
+- **JavaScript**: Lógica do frontend, incluindo validação de formulários e interações com o usuário;
+- **Font Awesome**: Ícones para melhorar a interface do usuário;
+- **Express.js**: Backend e validações do lado do servidor;
+- **MongoDB**: Banco de dados;
+- **Mongoose**: Banco de dados;
+- **Bcrypt**: Criptografar as senhas;
 - **Passport**: Utilizar o login via google e futuramente via facebook;
 - **OAuth 2.0**: Autenticação para permitir login de terceiros;
 ## Como rodar o projeto
