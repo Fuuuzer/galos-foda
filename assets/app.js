@@ -78,13 +78,10 @@ function passwordsCombine(senha1, senha2) {
 }
 
 pass[1].addEventListener('input', () => {
-  
-
   passwordsCombine(pass[1].value, pass[2].value)
 })
 
 pass[2].addEventListener('input', () => {
-
   passwordsCombine(pass[1].value, pass[2].value)
 })
 
