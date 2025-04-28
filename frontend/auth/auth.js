@@ -1,18 +1,33 @@
 const buttonRegister = document.getElementById('botao-cadastrar');
 const loginButton = document.getElementById('login-btn');
 const googleLoginButton = document.getElementById('login-google');
-const nome = document.getElementById('nome').value;
-const email = document.getElementById('email').value;
-const password = document.getElementById('password').value;
+const nomeInput = document.getElementById('nome');
+const emailInput = document.getElementById('email');
+import { password } from "../../assets/app";
 
-if (nome === '' || email === '' || password === '') {
-  buttonRegister.disabled = true;
-} else {
-  buttonRegister.disabled = false;
+function validateInputs() {
+  const nome = nomeInput.value.trim();
+  const email = emailInput.value.trim();
+  const password = password.value.trim();
+
+  if (nome === '' || email === '' || password === '') {
+    buttonRegister.disabled = true;
+  } else {
+    buttonRegister.disabled = false;
+  }
 }
+
+nomeInput.addEventListener('input', validateInputs);
+emailInput.addEventListener('input', validateInputs);
+password.addEventListener('input', validateInputs);
+
+validateInputs();
 
 buttonRegister.addEventListener('click', (e) => {
   e.preventDefault()
+  const nome = nomeInput.value.trim();
+  const email = emailInput.value.trim();
+  const password = password.value.trim();
 
   fetch('http://localhost:5000/register', {
     method: 'POST',

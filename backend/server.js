@@ -72,6 +72,7 @@ const findUser = async (email, password, res) => {
   }
 }
 
+// Rota de login
 app.post('/login', (req, res) => {
   const { email, password } = req.body;
 
@@ -79,6 +80,7 @@ app.post('/login', (req, res) => {
   }
 )
 
+// Rota para registrar
 app.post('/register', (req, res) => {
   const { nome, email, password } = req.body;
   console.log(password)
@@ -110,18 +112,35 @@ passport.use(new GoogleStrategy({
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL : "http://localhost:5000/auth/google/callback",
   passReqToCallback: true
-}, (request, accessToken, refreshToken, profile, done) =>  {
-    console.log('perfil do usuario', profile);
-    return done(null, profile)
+}, async (request, accessToken, refreshToken, profile, done) =>  {
+    try {
+      let user = await Usuario.findOne({ googleId: profile.id });
+
+      if (!user) {
+        user = await Usuario.create({
+          googleId: profile.id,
+          nome: profile.displayName,
+          email: profile.emails[0].value,
+         });
+      }
+      return done(null, user)
+    } catch (err) {
+      return done(err, null)
+    }
 }
 ))
 
 passport.serializeUser((user, done) => {
-  done(null, user);
+  done(null, user._id);
 });
 
-passport.deserializeUser((user, done) => {
-  done(null, user)
+passport.deserializeUser( async (id, done) => {
+  try {
+    const user = await Usuario.findById(id);
+    done(null, user);
+  } catch (err) {
+    done(err)
+  }
 });
 
 app.get('/auth/google', (req, res, next) =>  {
