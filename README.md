@@ -8,17 +8,16 @@ Esse projeto foi criado como um desafio pessoal para melhorar minhas habilidades
 
 ## Funcionalidades
 
-- [x] Tela de Login criada
-- [x] Tela de Cadastro criada
-- [x] Criação do banco de dados
 - [x] Login API c/ Google
 - [x] Validação forte de senha (utilizado o bcrypt para criptografar a senha antes de salvar no banco de dados)
 - [ ] Tela de Dashboard (em andamento)
 
 ### O que estou fazendo atualmente
 
-- **Tela de login/cadastro**: Implementação de um formulário de login e cadastro com validação de senha.
-- **Validações e a lógica do backend**: Validar informações a nível servidor, habilitar login e cadastro via Google com uso de API, etc.
+- ~**Tela de login/cadastro**: Implementação de um formulário de login e cadastro com validação de senha.~
+- ~**Validações e a lógica do backend**: Validar informações a nível servidor, habilitar login e cadastro.~
+- ~**Banco de dados**: Possuir um banco de dados para salvar os usuários que se cadastrarem.~
+- ~**Login via google**: Utilizar o OAuth 2.0 para fazer login utilizando a API da Google~
 - **Melhorias planejadas**: Introduzir mais recursos como:
   - Sistema de ranking para os galos.
   - Tela de perfil do usuário, onde o jogador pode ver seus galos e estatísticas.
