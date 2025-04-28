@@ -99,4 +99,6 @@ pass[2].addEventListener('input', () => {
 
 passwordInput.addEventListener('input', (e) => validatePassword(e.target.value));
 
-export const password = passwordInput;
+export function getPassword() {
+  return passwordInput.value;
+}

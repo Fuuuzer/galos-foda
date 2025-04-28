@@ -3,9 +3,10 @@ const loginButton = document.getElementById('login-btn');
 const googleLoginButton = document.getElementById('login-google');
 const nomeInput = document.getElementById('nome');
 const emailInput = document.getElementById('email');
-import { password } from "../../assets/app";
+const passwordGet = getPassword();
 
 function validateInputs() {
+  const getPassword = getPassword();
   const nome = nomeInput.value.trim();
   const email = emailInput.value.trim();
   const password = password.value.trim();
