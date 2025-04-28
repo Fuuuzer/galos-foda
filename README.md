@@ -19,7 +19,7 @@ Esse projeto foi criado como um desafio pessoal para melhorar minhas habilidades
 
 - ~**Tela de login/cadastro**: Implementação de um formulário de login e cadastro com validação de senha.~
 - ~**Validações e a lógica do backend**: Validar informações a nível servidor, habilitar login e cadastro.~
-- ~**Banco de dados**: Possuir um banco de dados para salvar os usuários que se cadastrarem. ~
+- ~**Banco de dados**: Possuir um banco de dados para salvar os usuários que se cadastrarem.~
 - ~**Login via google**: Utilizar o OAuth 2.0 para fazer login utilizando a API da Google~
 - **Melhorias planejadas**: Introduzir mais recursos como:
   - Sistema de ranking para os galos.
