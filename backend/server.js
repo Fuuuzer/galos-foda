@@ -37,6 +37,8 @@ app.get('/', (req, res) => {
   res.send()
 })
 
+
+//Inserir usuário no bando de dados
 const insertUser = async (nome, email, password, res) => {
   try {
     await Usuario.create({ nome, email, password});
@@ -48,6 +50,7 @@ const insertUser = async (nome, email, password, res) => {
   }
 }
 
+//Procurar usuário no banco de dados
 const findUser = async (email, password, res) => {
   try {
     const user = await Usuario.findOne({ email });
@@ -67,8 +70,8 @@ const findUser = async (email, password, res) => {
     console.log('Usuario encontrado')
     return res.status(200).json({ message: 'Login realizado'});
   } catch (err){
-    console.log('Email ou senha Incorretos')
-    return res.status(500).json({ message: 'Erro no servidor'});
+    console.log('Erro no servidor.')
+    return res.status(500).json({ message: 'Erro no servidor', err});
   }
 }
 
@@ -107,6 +110,7 @@ app.post('/register', (req, res) => {
   })
 })
 
+//Configurações para login via google utilizando o passport
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -144,13 +148,15 @@ passport.deserializeUser( async (id, done) => {
 });
 
 app.get('/auth/google', (req, res, next) =>  {
-  console.log('Inciaindo login google');
+  console.log('Iniciando login google');
   next();
 },
   passport.authenticate('google', { scope: ['email', 'profile'] }))
 
 app.use(express.static(path.join(__dirname, '../frontend')));
 
+
+//Rota login com o google
 app.get('/auth/google/callback', 
   passport.authenticate( 'google', {
     successRedirect: '/dashboard/dash.html',
@@ -158,6 +164,7 @@ app.get('/auth/google/callback',
   })
 )
 
+//Rota dashboard tela de perfil
 app.get('/dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend','dashboard','dash.html'))
 })
