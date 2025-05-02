@@ -1,0 +1,17 @@
+h1 {
+  color: red;
+  font-size: 4rem;
+}
+
+.hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero p {
+  font-size: 2rem;
+  color: #fff;
+}
