@@ -8,6 +8,35 @@ h1 {
   font-size: 4rem;
 }
 
+img {
+  display: block;
+  width: 60px;
+  margin: 10px;
+}
+
+.header-bg {
+  background: #666666;
+}
+
+nav {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+}
+
+li a {
+  background-color: #fff;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
 .hero {
   width: 100%;
   display: flex;
