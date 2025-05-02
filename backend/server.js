@@ -3,7 +3,6 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const express = require('express');
 const session = require ('express-session');
 const cors = require('cors');
-const e = require('express');
 const passport = require('passport');
 const GoogleStrategy = require ('passport-google-oauth20').Strategy;
 const router = express.Router();
@@ -134,10 +133,13 @@ passport.use(new GoogleStrategy({
 }
 ))
 
+// O que irá ser salvo na sessão quando o login der certo
 passport.serializeUser((user, done) => {
   done(null, user._id);
 });
 
+// Quando o usuario voltar pega as informalções salvas no
+// Serialize
 passport.deserializeUser( async (id, done) => {
   try {
     const user = await Usuario.findById(id);
