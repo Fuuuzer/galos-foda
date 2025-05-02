@@ -1,5 +1,10 @@
+body {
+  background-image: url("/assets/img/construcao.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 h1 {
-  color: red;
   font-size: 4rem;
 }
 
