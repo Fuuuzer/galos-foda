@@ -2,8 +2,8 @@ body {
   width: 100dvw;
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+
   background: #141414;
 }
 
@@ -17,9 +17,11 @@ a {
 }
 
 main {
+  max-width: 1200px;
+  min-width: 900px;
+  margin-top: 60px;
   display: flex;
-  width: 1000px;
-  margin: 0 3rem;
+  align-self: center;
   min-height: 600px;
   max-height: 50dvh;
   border-radius: 16px;
