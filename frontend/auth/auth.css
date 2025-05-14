@@ -230,31 +230,17 @@ input:focus {
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   main {
-    max-width: 800px;
-    display: flex;
     justify-content: center;
   }
+
   .left-side {
     display: none;
   }
 
   .right-side {
     background: #fff;
-    width: 450px;
-    border-radius: 0;
-  }
-
-  .form-register {
-    max-width: 100%;
-  }
-
-  input,
-  .inputs input {
-    min-width: 50px;
-    /* max-width: fit-content; */
-    padding: 10px;
-    font-size: 0.85rem;
+    border-radius: 8px;
   }
 }
