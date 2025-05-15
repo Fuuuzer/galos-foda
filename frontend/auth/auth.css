@@ -231,16 +231,29 @@ input:focus {
 }
 
 @media (max-width: 900px) {
+  body {
+    overflow-x: hidden;
+  }
+
   main {
+    width: 500px;
+    display: flex;
     justify-content: center;
+  }
+
+  .reverse .right-side {
+    transform: none;
+  }
+
+  .right-side,
+  .left-side,
+  .reverse .left-side,
+  .reverse .right-side {
+    transition: none;
+    border-radius: 16px;
   }
 
   .left-side {
     display: none;
-  }
-
-  .right-side {
-    background: #fff;
-    border-radius: 8px;
   }
 }
