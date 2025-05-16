@@ -3,6 +3,8 @@ body {
 }
 
 .header-bg {
+  width: 100%;
+  border: 1px solid red;
   background: #666666;
 }
 
@@ -12,6 +14,7 @@ h1 {
 }
 
 nav {
+  border: 1px solid red;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
